@@ -4,8 +4,9 @@ This a common application framework built on top of the Spring Boot. It meets ba
 
 This provides a central framework of various applications, microservices etc and easy to bring changes across the enterprise either fixing a bug or introducing a new feature.
 
-Current version provides the basic and advance needs of any application.
-####Basic:####
+Current version provides the basic and advance needs of any application.  
+
+#### Basic:
 1. Springboot dependencies for RestFul services, Flyway, JMS, JPA, Actuator
 2. Support for Flyway clean operation
 3. Configuring MOM specific properties with SpringBoot out of the box properties and connection management. 
@@ -18,7 +19,7 @@ The common application framework provides an example with ActiveMq which is used
     * Jms and Active-MQ
     * Logging (using SpringBoot default LogBack)
 
-####Advance (These are not provided by neither Spring nor SpringBoot):####
+#### Advance (These are not provided by neither Spring nor SpringBoot):
 1. **Support for preprocessing of jms message on methods annotated with @JmsListener (e.g. Schema validation)**  
     The common-application framework provides a generic design for application to define any number of annotation and associated    processors. Thus each listener can have different annotations and preprocessing will be happen accordingly.
 2. **Spring sleuth instrumentation with Spring-jms**  
@@ -31,7 +32,7 @@ The common application framework provides an example with ActiveMq which is used
 All the above features are showcased with Demo application which not only shows how to use the common-application-framework but also provided a useful resources of code which can be used as libraries in any project.
 
 ## Available Downloads:  
-Maven -  
+#### Maven -  
 ```  
         <parent>  
 	        <groupId>com.arpit9mittal.fmk</groupId>  
@@ -45,4 +46,11 @@ Maven -
             <version>1.0.0-RC1</version>  
         </dependency>  
 ```
+## Documentation
 
+In progress
+
+## License
+
+The Common Application Framework is released under version 2.0 of the
+[Apache License](http://www.apache.org/licenses/LICENSE-2.0).
