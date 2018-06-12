@@ -160,8 +160,8 @@
 
 	<scm>
 		<url>https://github.com/arpit9mittal/common-application-framework/</url>
-		<connection>scm:git:git://github.com/arpit9mittal/common-application-framework.git</connection>
-		<developerConnection>scm:git:https://arpit9mittal@github.com/arpit9mittal/application-framework</developerConnection>
+		<connection>scm:git:git@github.com:arpit9mittal/common-application-framework.git</connection>
+		<developerConnection>scm:git:git@github.com:arpit9mittal/application-framework.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
