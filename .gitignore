@@ -21,3 +21,12 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/.settings
+/*.project
+/*.classpath
+/CommonApplicationFrameworkCore/.mvn
+/CommonApplicationFrameworkCore/mvnw.cmd
+/CommonApplicationFrameworkCore/mvnw
+/CommonApplicationFrameworkDemo/.mvn
+/CommonApplicationFrameworkDemo/mvnw.cmd
+/CommonApplicationFrameworkDemo/mvnw

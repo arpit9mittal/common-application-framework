@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="list.user">
+        <![CDATA[
+            SELECT
+                id AS id
+                ,first_name AS firstName
+                ,last_name AS lastName
+                ,username AS username
+            FROM USER     
+        ]]>
+	</entry>
+	<entry key="find.user.id">
+        <![CDATA[
+            SELECT
+                id AS id
+                ,first_name AS firstName
+                ,last_name AS lastName
+                ,username AS username            
+            FROM USER      
+            WHERE id = ?
+        ]]>
+	</entry>
+	<entry key="find.user.last.name">
+        <![CDATA[
+            SELECT
+                id AS id
+                ,first_name AS firstName
+                ,last_name AS lastName
+                ,username AS username            
+            FROM USER  
+            WHERE last_name = ?    
+        ]]>
+	</entry>
+</properties>
