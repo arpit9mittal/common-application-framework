@@ -35,9 +35,9 @@ All the above features are showcased with Demo application which not only shows 
 #### Maven -  
 ```  
         <parent>  
-	        <groupId>com.arpit9mittal.fmk</groupId>  
-	        <artifactId>common-application-framework-parent</artifactId>  
-	        <version>1.0.0-RC1</version>  
+            <groupId>com.arpit9mittal.fmk</groupId>  
+            <artifactId>common-application-framework-parent</artifactId>  
+            <version>1.0.0-RC1</version>  
         </parent>
   
         <dependency>  
