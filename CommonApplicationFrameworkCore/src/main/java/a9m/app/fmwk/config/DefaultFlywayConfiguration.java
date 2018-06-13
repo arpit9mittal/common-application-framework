@@ -42,12 +42,19 @@ public class DefaultFlywayConfiguration {
     private static final Logger logger = LoggerFactory.getLogger(DefaultFlywayConfiguration.class);
     
     /**
+     * This method overrides the default behavior of SpringBoot Flyway and
+     * allows user of the system to issue flyway clean command. This also has
+     * inbuilt tolerance of disregarding the clean command if issued in mistake
+     * unless the property "flyway.cleanDisabled" is set to true.
+     * 
      * @param flywayCleanDisabled
-     * @return
+     *            a boolean property which is defaulted to true to safeguard
+     *            against accidental clean requests
+     * @return instance of
+     *         {@link org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy}
      */
     @Bean
-    public FlywayMigrationStrategy cleanMigrateStrategy(@Value("${flyway.cleanDisabled:true}")
-    boolean flywayCleanDisabled) {
+    public FlywayMigrationStrategy cleanMigrateStrategy(@Value("${flyway.cleanDisabled:true}") boolean flywayCleanDisabled) {
         FlywayMigrationStrategy strategy = new FlywayMigrationStrategy() {
             @Override
             public void migrate(Flyway flyway) {

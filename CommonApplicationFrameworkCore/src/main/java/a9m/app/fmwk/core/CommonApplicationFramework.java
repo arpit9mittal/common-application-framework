@@ -76,7 +76,9 @@ public class CommonApplicationFramework {
      * schema annotation or define and add more annotation
      * 
      * @param processor
-     * @return
+     *            bean of
+     *            {@link a9m.app.fmwk.core.jms.DefaultJsonSchemaValidator}
+     * @return instance of {@link java.util.Map}
      */
     @SuppressWarnings("rawtypes")
     @Bean
@@ -87,10 +89,18 @@ public class CommonApplicationFramework {
     }
     
     /**
+     * @param annotationProcessorMap
+     *            a {@link java.util.Map} of Annotation with their
+     *            {@link a9m.app.fmwk.core.support.Processor} which will be
+     *            applied if the annotation is found on the method
      * @param isSleuthJmsInstrumentationEnabled
+     *            boolean value fetched from a property file
      * @param tracer
+     *            bean of {@link org.springframework.cloud.sleuth.Tracer}
      * @param spanExtractor
-     * @return
+     *            bean of
+     *            {@link org.springframework.cloud.sleuth.instrument.messaging.MessagingSpanTextMapExtractor}
+     * @return instance of {@link org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor} 
      */
     @SuppressWarnings("rawtypes")
     @Bean(JmsListenerConfigUtils.JMS_LISTENER_ANNOTATION_PROCESSOR_BEAN_NAME)
@@ -129,9 +139,8 @@ public class CommonApplicationFramework {
                                     tracer.continueSpan(span);
                                 }
                                 
-                                
                                 try {
-                                 // execute schema processor if any    
+                                    // execute schema processor if any
                                     for (Entry<Class, Annotation> entry : annotationMap.entrySet()) {
                                         annotationProcessorMap.get(entry.getKey()).process(jmsMessage, entry.getValue());
                                     }

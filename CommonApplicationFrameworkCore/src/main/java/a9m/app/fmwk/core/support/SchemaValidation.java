@@ -32,8 +32,10 @@ public class SchemaValidation {
     
     /**
      * @param content
-     * @return
+     *            a text
+     * @return an instance of {@link com.fasterxml.jackson.databind.JsonNode}
      * @throws IOException
+     *             an instance of {@link java.io.IOException}
      */
     public static JsonNode getJsonNodeFromStringContent(String content) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -43,8 +45,10 @@ public class SchemaValidation {
     
     /**
      * @param schemaContent
-     * @return
+     *            a text content of the schema
+     * @return an instance of {@link com.networknt.schema.JsonSchema}
      * @throws Exception
+     *             an instance of {@link java.lang.Exception}
      */
     public static JsonSchema getJsonSchemaFromStringContent(String schemaContent) throws Exception {
         JsonSchemaFactory factory = JsonSchemaFactory.getInstance();
@@ -54,9 +58,13 @@ public class SchemaValidation {
     
     /**
      * @param jsonSchemaFilePath
+     *            a relative file path to schema file
      * @param jsonContent
-     * @return
+     *            a text content of the json payload to be validated
+     * @return an instace of {@link java.util.Set} of
+     *         {@link com.networknt.schema.ValidationMessage}
      * @throws Exception
+     *             an instance of {@link java.lang.Exception}
      */
     public static Set<ValidationMessage> withJsonSchema(String jsonSchemaFilePath, String jsonContent) throws Exception {
         String schemaContent = Utils.getFileContent(jsonSchemaFilePath);

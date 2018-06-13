@@ -34,7 +34,7 @@ import org.springframework.util.StringUtils;
  */
 @Configuration
 @Import(DefaultJmsConfiguration.class)
-@EnableConfigurationProperties({ActiveMQProperties.class, AppFrmwkActiveMQProperties.class })
+@EnableConfigurationProperties({ ActiveMQProperties.class, AppFrmwkActiveMQProperties.class })
 public class ActiveMqJmsConfiguration {
     
     @Value("${spring.application.name}")
@@ -42,8 +42,11 @@ public class ActiveMqJmsConfiguration {
     
     /**
      * @param properties
+     *            bean of
+     *            {@link org.springframework.boot.autoconfigure.jms.activemq.ActiveMQProperties}
      * @param appFmwkProperties
-     * @return
+     *            bean of {@link AppFrmwkActiveMQProperties}
+     * @return instance of {@link org.apache.activemq.ActiveMQConnectionFactory}
      */
     ActiveMQConnectionFactory myConnectionFactory(ActiveMQProperties properties, AppFrmwkActiveMQProperties appFmwkProperties) {
         
@@ -86,8 +89,12 @@ public class ActiveMqJmsConfiguration {
     
     /**
      * @param properties
+     *            bean of
+     *            {@link org.springframework.boot.autoconfigure.jms.activemq.ActiveMQProperties}
      * @param appFmwkProperties
-     * @return
+     *            bean of {@link AppFrmwkActiveMQProperties}
+     * @return instance of
+     *         {@link org.apache.activemq.pool.PooledConnectionFactory}
      */
     @Primary
     @Bean(initMethod = "start", destroyMethod = "stop")

@@ -40,5 +40,5 @@ import a9m.app.fmwk.core.CommonApplicationFramework;
 @Import(CommonApplicationFramework.class)
 @ComponentScan
 public @interface EnableAppFramework {
-
+    
 }

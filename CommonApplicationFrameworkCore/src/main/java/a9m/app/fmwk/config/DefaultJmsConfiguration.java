@@ -50,12 +50,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Configuration
 public class DefaultJmsConfiguration {
     
-//    private static final Logger logger = LoggerFactory.getLogger(DefaultJmsConfiguration.class);
+    // private static final Logger logger =
+    // LoggerFactory.getLogger(DefaultJmsConfiguration.class);
     
     /**
      * @param connectionFactory
+     *            bean of
+     *            {@link org.springframework.jms.config.JmsListenerContainerFactory}
      * @param configurer
-     * @return
+     *            bean of
+     *            {@link org.springframework.jms.config.DefaultJmsListenerContainerFactory}
+     * @return instance of
+     *         {@link org.springframework.jms.config.DefaultJmsListenerContainerFactory}
      */
     @Bean
     public JmsListenerContainerFactory<?> myFactory(final ConnectionFactory connectionFactory, final DefaultJmsListenerContainerFactoryConfigurer configurer) {
@@ -70,7 +76,8 @@ public class DefaultJmsConfiguration {
     }
     
     /**
-     * @return
+     * @return instance of
+     *         {@link org.springframework.jms.support.converter.MessageConverter}
      */
     @Bean
     static MessageConverter jacksonJmsMessageConverter() {
@@ -91,8 +98,11 @@ public class DefaultJmsConfiguration {
     
     /**
      * @param connectionFactory
+     *            bean of {@link javax.jms.ConnectionFactory}
      * @param jacksonJmsMessageConverter
-     * @return
+     *            bean of
+     *            {@link org.springframework.jms.support.converter.MessageConverter}
+     * @return instance of {@link org.springframework.jms.core.JmsTemplate}
      */
     @Bean
     @Qualifier("jmsQueueTemplate")
@@ -106,8 +116,12 @@ public class DefaultJmsConfiguration {
     
     /**
      * @param connectionFactory
+     *            bean of
+     *            {@link org.springframework.jms.config.JmsListenerContainerFactory}
      * @param jacksonJmsMessageConverter
-     * @return
+     *            bean of
+     *            {@link org.springframework.jms.support.converter.MessageConverter}
+     * @return instance of {@link org.springframework.jms.core.JmsTemplate}
      */
     @Bean
     @Qualifier("jmsTopicTemplate")
@@ -122,8 +136,12 @@ public class DefaultJmsConfiguration {
     
     /**
      * @param jmsTopicTemplate
+     *            bean of {@link org.springframework.jms.core.JmsTemplate}
      * @param jacksonJmsMessageConverter
-     * @return
+     *            bean of
+     *            {@link org.springframework.jms.support.converter.MessageConverter}
+     * @return instance of
+     *         {@link org.springframework.jms.core.JmsMessagingTemplate}
      */
     @Bean
     @Qualifier("jmsMessagingTopicTemplate")
@@ -133,13 +151,17 @@ public class DefaultJmsConfiguration {
     
     /**
      * @param jmsQueueTemplate
+     *            bean of {@link org.springframework.jms.core.JmsTemplate}
      * @param jacksonJmsMessageConverter
-     * @return
+     *            bean of
+     *            {@link org.springframework.jms.support.converter.MessageConverter}
+     * @return instance of
+     *         {@link org.springframework.jms.core.JmsMessagingTemplate}
      */
     @Bean
     @Qualifier("jmsMessagingQueueTemplate")
     public JmsMessagingTemplate jmsMessagingQueueTemplate(final JmsTemplate jmsQueueTemplate, final MessageConverter jacksonJmsMessageConverter) {
         return new JmsMessagingTemplate(jmsQueueTemplate);
     }
-
+    
 }

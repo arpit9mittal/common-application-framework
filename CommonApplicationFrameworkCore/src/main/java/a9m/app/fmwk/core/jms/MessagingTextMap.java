@@ -30,11 +30,10 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 
 /**
- * Copied from Spring package as it was not visible as the access level for
- * class is default
+ * Copied this class from Spring cloud package as it was not visible as the
+ * access level for class is default
  * 
- * @See org.springframework.cloud.sleuth.instrument.messaging.MessagingTextMap
- *
+ * @see org.springframework.cloud.sleuth.instrument.messaging
  */
 public class MessagingTextMap implements SpanTextMap {
     

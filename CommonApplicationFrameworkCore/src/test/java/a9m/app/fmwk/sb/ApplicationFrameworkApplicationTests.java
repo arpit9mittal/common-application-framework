@@ -25,11 +25,11 @@ import a9m.app.fmwk.core.CommonApplicationFramework;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(classes = {CommonApplicationFramework.class})
+@ContextConfiguration(classes = { CommonApplicationFramework.class })
 public class ApplicationFrameworkApplicationTests {
-
-	@Test
-	public void contextLoads() {
-	}
-
+    
+    @Test
+    public void contextLoads() {
+    }
+    
 }

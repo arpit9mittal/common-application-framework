@@ -39,14 +39,23 @@ public class JmsSleuthPostProcessor implements MessagePostProcessor {
     
     private Tracer tracer;
     
+    /**
+     * Constructs a MessagePostProcessor
+     * 
+     * @param tracer
+     *            a bean of {@link org.springframework.cloud.sleuth.Tracer}
+     * @see MessagePostProcessor
+     */
     @Autowired
     public JmsSleuthPostProcessor(Tracer tracer) {
         super();
         this.tracer = tracer;
     }
     
-    /* (non-Javadoc)
-     * @see org.springframework.messaging.core.MessagePostProcessor#postProcessMessage(org.springframework.messaging.Message)
+    /*
+     * (non-Javadoc)
+     * @see org.springframework.messaging.core.MessagePostProcessor#
+     * postProcessMessage(org.springframework.messaging.Message)
      */
     @Override
     public org.springframework.messaging.Message<?> postProcessMessage(org.springframework.messaging.Message<?> message) {

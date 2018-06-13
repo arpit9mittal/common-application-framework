@@ -16,15 +16,19 @@
 package a9m.app.fmwk.core.support;
 
 /**
+ * The purpose of this exception is notify the caller to terminate the current
+ * processing.
+ * 
  * @author arpmitta
  *
  */
 public class TerminateProcessException extends Exception {
     
     private static final long serialVersionUID = -6393620580930849936L;
-
+    
     /**
      * @param message
+     *            a text message
      */
     public TerminateProcessException(String message) {
         super(message);
@@ -32,6 +36,7 @@ public class TerminateProcessException extends Exception {
     
     /**
      * @param cause
+     *            an object of Throwable
      */
     public TerminateProcessException(Throwable cause) {
         super(cause);
@@ -39,7 +44,9 @@ public class TerminateProcessException extends Exception {
     
     /**
      * @param message
+     *            a text message
      * @param cause
+     *            an object of Throwable
      */
     public TerminateProcessException(String message, Throwable cause) {
         super(message, cause);

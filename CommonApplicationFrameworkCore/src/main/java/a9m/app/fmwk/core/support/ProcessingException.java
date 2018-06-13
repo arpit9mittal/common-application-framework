@@ -16,33 +16,39 @@
 package a9m.app.fmwk.core.support;
 
 /**
+ * This class is an extension of RuntimeException
+ * 
  * @author arpmitta
  *
  */
 public class ProcessingException extends RuntimeException {
-
+    
+    private static final long serialVersionUID = -8043667937572664002L;
+    
     /**
      * @param message
+     *            a text message
      * @param cause
+     *            an object of Throwable
      */
     public ProcessingException(String message, Throwable cause) {
         super(message, cause);
     }
-
+    
     /**
      * @param message
+     *            a text message
      */
     public ProcessingException(String message) {
         super(message);
     }
-
+    
     /**
      * @param cause
+     *            an object of Throwable
      */
     public ProcessingException(Throwable cause) {
         super(cause);
     }
-
-    private static final long serialVersionUID = -8043667937572664002L;
     
 }

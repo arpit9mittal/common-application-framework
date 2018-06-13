@@ -41,8 +41,10 @@ public final class Utils {
     
     /**
      * @param json
+     *            a json text
      * @param type
-     * @return
+     *            a {@link java.lang.Class}
+     * @return an object of type T
      */
     public static <T> T jsonToObject(String json, Class<T> type) {
         if (StringUtils.isEmpty(json)) {
@@ -60,7 +62,8 @@ public final class Utils {
     
     /**
      * @param type
-     * @return
+     *            an object
+     * @return a json string
      */
     public static String toJson(final Object type) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -74,8 +77,10 @@ public final class Utils {
     
     /**
      * @param path
-     * @return
+     *            file path
+     * @return content of the file
      * @throws IOException
+     *             an instance of {@link java.io.IOException}
      */
     public static String getFileContent(String path) throws IOException {
         ClassLoader classLoader = Utils.class.getClassLoader();
@@ -85,8 +90,10 @@ public final class Utils {
     
     /**
      * @param message
-     * @return
+     *            an object of {@link javax.jms.Message}
+     * @return the text payload of the {@link javax.jms.Message}
      * @throws JMSException
+     *             an instance of {@link javax.jms.JMSException}
      */
     public static String getJsonPayload(final Message message) throws JMSException {
         String json = "";
