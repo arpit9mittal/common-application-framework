@@ -6,7 +6,7 @@
 
 	<groupId>com.arpit9mittal.fmk</groupId>
 	<artifactId>common-application-framework-parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0-RC2</version>
 	<packaging>pom</packaging>
 
 	<name>${project.artifactId}-${project.version}</name>
@@ -208,6 +208,8 @@
 					<serverId>ossrh</serverId>
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 					<autoReleaseAfterClose>false</autoReleaseAfterClose>
+					<keepStagingRepositoryOnCloseRuleFailure>false</keepStagingRepositoryOnCloseRuleFailure>
+					<skipStagingRepositoryClose>true</skipStagingRepositoryClose>
 				</configuration>
 			</plugin>
 			<plugin>
