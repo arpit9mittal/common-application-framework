@@ -1,18 +1,18 @@
-/*******************************************************************************
- * Copyright  2017-2018 Arpit Mittal
- * 
+/*
+ * Copyright 2013-2016 the original author or authors.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- ******************************************************************************/
+ */
 package a9m.app.fmwk.core.jms;
 
 import java.util.HashMap;
@@ -29,26 +29,32 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 
+/**
+ * Copied from Spring package as it was not visible as the access level for
+ * class is default
+ * 
+ * @See org.springframework.cloud.sleuth.instrument.messaging.MessagingTextMap
+ *
+ */
 public class MessagingTextMap implements SpanTextMap {
-
+    
     private final MessageBuilder<?> delegate;
-
+    
     public MessagingTextMap(MessageBuilder<?> delegate) {
         this.delegate = delegate;
     }
-
+    
     @Override
     public Iterator<Map.Entry<String, String>> iterator() {
         Map<String, String> map = new HashMap<>();
-        for (Map.Entry<String, Object> entry : this.delegate.build().getHeaders()
-                .entrySet()) {
+        for (Map.Entry<String, Object> entry : this.delegate.build().getHeaders().entrySet()) {
             if (!NativeMessageHeaderAccessor.NATIVE_HEADERS.equals(entry.getKey())) {
                 map.put(entry.getKey(), String.valueOf(entry.getValue()));
             }
         }
         return map.entrySet().iterator();
     }
-
+    
     @Override
     @SuppressWarnings("unchecked")
     public void put(String key, String value) {
@@ -56,22 +62,17 @@ public class MessagingTextMap implements SpanTextMap {
             return;
         }
         Message<?> initialMessage = this.delegate.build();
-        MessageHeaderAccessor accessor = MessageHeaderAccessor
-                .getMutableAccessor(initialMessage);
+        MessageHeaderAccessor accessor = MessageHeaderAccessor.getMutableAccessor(initialMessage);
         accessor.setHeader(key, value);
         if (accessor instanceof SimpMessageHeaderAccessor) {
             SimpMessageHeaderAccessor nativeAccessor = (SimpMessageHeaderAccessor) accessor;
             nativeAccessor.setNativeHeader(key, value);
-        }
-        else if (accessor.getHeader(NativeMessageHeaderAccessor.NATIVE_HEADERS) != null) {
-            if (accessor.getHeader(
-                    NativeMessageHeaderAccessor.NATIVE_HEADERS) instanceof MultiValueMap) {
-                MultiValueMap<String, String> map = (MultiValueMap<String, String>) accessor
-                        .getHeader(NativeMessageHeaderAccessor.NATIVE_HEADERS);
+        } else if (accessor.getHeader(NativeMessageHeaderAccessor.NATIVE_HEADERS) != null) {
+            if (accessor.getHeader(NativeMessageHeaderAccessor.NATIVE_HEADERS) instanceof MultiValueMap) {
+                MultiValueMap<String, String> map = (MultiValueMap<String, String>) accessor.getHeader(NativeMessageHeaderAccessor.NATIVE_HEADERS);
                 map.add(key, value);
             }
-        }
-        else {
+        } else {
             MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
             accessor.setHeader(NativeMessageHeaderAccessor.NATIVE_HEADERS, map);
             map.add(key, value);

@@ -37,13 +37,13 @@ All the above features are showcased with Demo application which not only shows 
         <parent>  
             <groupId>com.arpit9mittal.fmk</groupId>  
             <artifactId>common-application-framework-parent</artifactId>  
-            <version>1.0.0-RC1</version>  
+            <version>1.0.0-RC2</version>  
         </parent>
   
         <dependency>  
             <groupId>com.arpit9mittal.fmk</groupId>  
             <artifactId>common-application-framework-core</artifactId>  
-            <version>1.0.0-RC1</version>  
+            <version>1.0.0-RC2</version>  
         </dependency>  
 ```
 ## Documentation

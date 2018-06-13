@@ -16,7 +16,7 @@
 package a9m.app.fmwk.core.support;
 
 /**
- * Marker interface
+ * This interface help in constructing a pipeline of processes.
  * 
  * @author arpmitta
  *
@@ -24,10 +24,19 @@ package a9m.app.fmwk.core.support;
 public interface Processor<T, V> {
     
     /**
+     * THis method process with input T and V and throw either
+     * {@link RuntimeException} or {@link Exception}
+     * 
      * @param t
+     *            an input object of type T
      * @param v
+     *            an input object of type V
      * @throws ProcessingException
+     *             this exception is thrown when the need is for rolling back
+     *             transactions when Spring transaction management is used.
      * @throws TerminateProcessException
+     *             this exception is thrown when the need is to end the process
+     *             and all the other processes in the pipeline.
      */
     void process(T t, V v) throws ProcessingException, TerminateProcessException;
     

@@ -58,7 +58,7 @@ public class UserRestApiIntegrationTest {
     }
     
     @Test
-    public void getHello() throws Exception {
+    public void getUser() throws Exception {
         ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
         assertThat(response.getBody(), equalTo("{\"id\":1,\"username\":\"Flywaychamp\",\"firstName\":\"Arpit\",\"lastName\":\"Mittal\"}"));
     }

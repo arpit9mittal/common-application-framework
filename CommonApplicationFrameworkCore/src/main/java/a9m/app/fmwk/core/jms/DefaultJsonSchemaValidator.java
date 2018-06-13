@@ -26,8 +26,10 @@ import org.springframework.stereotype.Component;
 import com.networknt.schema.ValidationMessage;
 
 import a9m.app.fmwk.annotation.Schema;
+import a9m.app.fmwk.core.support.ProcessingException;
 import a9m.app.fmwk.core.support.Processor;
 import a9m.app.fmwk.core.support.SchemaValidation;
+import a9m.app.fmwk.core.support.TerminateProcessException;
 import a9m.app.fmwk.core.support.Utils;
 
 /**
@@ -45,7 +47,7 @@ public class DefaultJsonSchemaValidator implements Processor<Message, Schema> {
      * java.lang.Object)
      */
     @Override
-    public void process(Message jmsMessage, Schema annotation) {
+    public void process(Message jmsMessage, Schema annotation) throws ProcessingException, TerminateProcessException {
         logger.info("Validation the jms message with schema '{}'", annotation.value());
         
         String schemaFilePath = String.valueOf(annotation.value());
@@ -55,13 +57,16 @@ public class DefaultJsonSchemaValidator implements Processor<Message, Schema> {
             Set<ValidationMessage> errors = SchemaValidation.withJsonSchema(schemaFilePath, payload);
             
             if (errors.size() > 0) {
-                logger.error("Json Schema validation failed with following errors: \n {}", errors);
+                logger.error("Json Schema validation failed for payload \n {} \n with following errors: \n {}", payload, errors);
+                throw new TerminateProcessException("Json Schema validation failed with schema: " + schemaFilePath);
             } else {
                 logger.info("Schema validation passed for payload: {}", payload);
             }
-            
+        } catch (TerminateProcessException e) {
+            throw e;
         } catch (Exception e) {
             logger.error("Error while validating JMS Message with Schema", e);
+            throw new ProcessingException(e);
         }
     }
     
